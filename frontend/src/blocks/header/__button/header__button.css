@@ -1,0 +1,13 @@
+.header__button {
+  color: #a9a9a9;
+  background-color: transparent;
+  border: none;
+}
+
+@media screen and (max-width: 560px) {
+  .header__button {
+    font-size: 18px;
+    padding: 0;
+    padding-top: 44px;
+  }
+}
