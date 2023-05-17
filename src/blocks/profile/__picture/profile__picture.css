@@ -1,0 +1,9 @@
+.profile__avatar {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.profile__avatar:hover .profile__change-btn {
+  display: block;
+}
