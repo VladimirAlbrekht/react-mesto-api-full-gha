@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const NoFoundError = require('./errors/noFoundError');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const errorHandler = require('./middlewares/errorHandler');
 const rootRouter = require('./routes/index');
@@ -22,8 +23,14 @@ app.use((req, res, next) => {
 // Подключаемся к серверу MongoDB
 mongoose.connect('mongodb://localhost:27017/mestobd', { useNewUrlParser: true, useUnifiedTopology: true });
 
+// Подключаем логгер запросов
+app.use(requestLogger);
+
 // Подключаем корневой роутер
 app.use(rootRouter);
+
+// Подключаем логгер ошибок
+app.use(errorLogger);
 
 // Middleware для обработки ошибок celebrate
 app.use(errors());
