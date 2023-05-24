@@ -2,11 +2,11 @@ export const BASE_URL = "https://api.mesto-15.nomoredomains.monster";
 
 
 const getResponseData = (res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-} 
+  if (res.ok) {
+    return res.json().then((data) => data || {});
+  }
+  return Promise.reject(`Ошибка: ${res.status}`);
+};
 
 
 export const register = (password, email) => {

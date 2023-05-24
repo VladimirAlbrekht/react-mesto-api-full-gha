@@ -260,7 +260,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <div className="page">
-          <Header email={email} onSignOut={handleSignOut} />
+        <Header email={loggedIn ? email : ''} onSignOut={handleSignOut} />
           <Routes>
             <Route
               path="/*"
