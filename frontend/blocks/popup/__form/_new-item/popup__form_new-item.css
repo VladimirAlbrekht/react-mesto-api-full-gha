@@ -1,0 +1,4 @@
+.popup-new-item__form {
+  display: flex;
+  flex-direction: column;
+}
