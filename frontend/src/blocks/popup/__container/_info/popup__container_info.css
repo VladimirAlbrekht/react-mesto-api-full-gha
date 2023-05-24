@@ -1,0 +1,13 @@
+.popup__container_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+@media (max-width: 560px) {
+  .header__container_info {
+    order: 1;
+  }
+}

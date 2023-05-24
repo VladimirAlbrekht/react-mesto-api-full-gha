@@ -1,0 +1,7 @@
+@media (max-width: 560px) {
+  .header__container_mobile {
+    padding: 28px 19px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+}
