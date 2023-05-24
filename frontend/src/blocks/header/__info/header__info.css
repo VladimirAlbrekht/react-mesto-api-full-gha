@@ -1,0 +1,11 @@
+.header__info {
+  display: flex;
+  align-self: center;
+  order: 1;
+}
+
+@media screen and (max-width: 560px) {
+  .header__info {
+    display: none;
+  }
+}
