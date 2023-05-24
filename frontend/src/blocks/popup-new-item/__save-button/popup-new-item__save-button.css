@@ -1,0 +1,30 @@
+.popup-new-item__save-button {
+  margin-top: 15px;
+  background-color: #000000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 14px 0;
+  border-radius: 2px;
+  max-height: 50px;
+  border: 0;
+}
+
+.popup-new-item__save-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+@media (max-width: 568px) {
+  .popup-new-item__save-button {
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 15px;
+  }
+}

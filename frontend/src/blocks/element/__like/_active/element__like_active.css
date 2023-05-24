@@ -1,0 +1,10 @@
+.element__like_active {
+  display: flex;
+  align-self: center;
+  background: url(./../../../../images/icons/dark-heart.svg) no-repeat center;
+  width: 22px;
+  min-width: 22px;
+  height: 19px;
+  border: none;
+  padding: 0px;
+}

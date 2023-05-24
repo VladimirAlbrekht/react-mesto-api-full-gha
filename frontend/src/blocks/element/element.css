@@ -1,0 +1,10 @@
+.element {
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden; /* Использую, чтобы были видны скругленные углы на картинке */
+}
