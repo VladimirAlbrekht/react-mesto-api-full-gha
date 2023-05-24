@@ -1,0 +1,12 @@
+.element__desc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 18px 25px 20px;
+  margin: 0;
+  border-radius: 0 0 10px 10px;
+  min-height: 79px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #000;
+}

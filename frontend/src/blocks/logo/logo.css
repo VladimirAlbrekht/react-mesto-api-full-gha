@@ -1,0 +1,16 @@
+.logo {
+  width: 142.01px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 767px) {
+  .logo {
+    padding-left: 28px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .logo {
+    width: 103.74px;
+  }
+}

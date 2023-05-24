@@ -1,0 +1,27 @@
+.header {
+  min-height: 74px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header::after {
+  content: "";
+  border-bottom: 1px solid #545454;
+  opacity: 0.7;
+  height: 0;
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    min-height: 64px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .header {
+    min-height: 56px;
+  }
+}
+

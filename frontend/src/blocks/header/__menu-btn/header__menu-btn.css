@@ -1,0 +1,29 @@
+.header__menu-btn {
+  width: 24px;
+  height: 24px;
+  display: none;
+  padding-right: 28px;
+  transition: opacity .3s ease-in;
+}
+
+.header__menu-btn div {
+  height: 3px;
+  background-color: #fff;
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.header__menu-btn:hover {
+  cursor: pointer;
+  opacity: .6;
+}
+
+
+@media screen and (max-width:560px) {
+  .header__menu-btn {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+}
+

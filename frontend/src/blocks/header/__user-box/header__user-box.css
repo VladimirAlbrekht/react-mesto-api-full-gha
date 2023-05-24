@@ -1,0 +1,16 @@
+
+.header__user-box{
+  display: flex;
+  align-self: center;
+}
+
+@media screen and (max-width:560px) {
+  .header__user-box{
+    display: none;
+  }
+}
+
+
+
+
+  

@@ -1,0 +1,32 @@
+.element__pic {
+  display: block;
+  width: 100%;
+  height: 282px;
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+  overflow: hidden;
+  transition: opacity .3s ease-in;
+}
+
+.element__pic:hover {
+  cursor: pointer;
+  opacity: .6;
+}
+
+@media screen and (max-width: 950px) {
+  .element__pic {
+    height: 310px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .element__pic {
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .element__pic {
+    height: 282px;
+  }
+}

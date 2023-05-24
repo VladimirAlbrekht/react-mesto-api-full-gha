@@ -1,0 +1,6 @@
+@media screen and (max-width:560px) {
+  .logo_small-menu{
+    order:2;
+    padding: 30px 0 30px 28px;
+  }
+}

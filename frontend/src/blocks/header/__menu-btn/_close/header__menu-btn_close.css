@@ -1,0 +1,15 @@
+@media screen and (max-width:560px) {
+  .header__menu-btn_close {
+    width: 34px;
+    height: 34px;
+    background-image: url('../../../../images/close-btn.svg');
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+    order: 2;
+  }
+    
+  .header__menu-btn_close div {
+    display: none;   
+  }
+}

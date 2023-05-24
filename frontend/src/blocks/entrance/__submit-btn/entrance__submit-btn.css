@@ -1,0 +1,38 @@
+.entrance__submit-btn{
+  background-color: #fff;
+  color: #000;
+  border: none;
+  height: 50px;
+  border-radius: 2px;
+  padding: 0;
+  margin: 46px 0 0;
+  font-style: inherit;
+  font-size: 18px;
+  line-height: 1.22;
+  text-align: center;
+  width: 100%;
+  transition: opacity .3s ease-in;
+  box-sizing: border-box;
+  margin-top: auto;
+  margin-bottom: 31.8px;
+}
+  
+  
+.entrance__submit-btn:hover {
+  cursor: pointer;
+  opacity: 0.85;
+}
+    
+.entrance__submit-btn:focus {
+  outline: none;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+
+@media screen and (max-width:560px) {
+  .entrance__submit-btn {
+    font-size: 16px;
+    min-height: 40px;
+  }
+}
+

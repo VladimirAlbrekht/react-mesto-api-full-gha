@@ -1,0 +1,19 @@
+.entrance{
+  min-height: calc(100vh - 282px);
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media screen and (max-width:950px) {
+  .entrance {
+    min-height: calc(100vh - 210px);
+  }
+}
+
+
+@media screen and (max-width:560px) {
+  .entrance {
+    min-height: calc(100vh - 170px);
+  }
+}

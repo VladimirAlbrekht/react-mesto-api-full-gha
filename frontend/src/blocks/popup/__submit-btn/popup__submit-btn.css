@@ -1,0 +1,36 @@
+.popup__submit-btn {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  min-height: 50.15px;
+  border-radius: 2px;
+  padding: 0;
+  margin: 46px 0 0;
+  font-style: inherit;
+  font-size: 18px;
+  line-height: 1.22;
+  text-align: center;
+  width: 100%;
+  transition: background-color .3s ease-in;
+  box-sizing: border-box;
+}
+
+.popup__submit-btn:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.popup__submit-btn:focus {
+  outline: none;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+
+@media screen and (max-width:560px) {
+  .popup__submit-btn {
+    font-size: 14px;
+    min-height: 40px;
+    margin: 36px 0 0;
+  }
+}
+
