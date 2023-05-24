@@ -2,8 +2,12 @@ export const BASE_URL = "https://api.mesto-15.nomoredomains.monster";
 
 
 const getResponseData = (res) => {
+  console.log(res);
   if (res.ok) {
-    return res.json().then((data) => data || {});
+    return res.json().then((data) => {
+      console.log(data);
+      return data || {};
+    });
   }
   return Promise.reject(`Ошибка: ${res.status}`);
 };
