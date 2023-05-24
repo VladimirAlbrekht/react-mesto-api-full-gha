@@ -77,9 +77,8 @@ class Api {
 
 //Добавляем экземпляр класса  Api c данными пользователя
 const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-59",
+  baseUrl: "https://api.mesto-15.nomoredomains.monster",
   headers: {
-    authorization: "4ad205f5-51c6-4198-8b11-26d3d2a06600",
     "Content-Type": "application/json",
   },
 });
