@@ -1,9 +1,8 @@
 export const BASE_URL = "https://api.mesto-15.nomoredomains.monster";
 
-
 const getResponseData = (res) => {
   if (res.ok) {
-    return res.json();
+    return res;
   }
   return Promise.reject(`Ошибка: ${res.status}`);
 } 
