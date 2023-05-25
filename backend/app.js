@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 
@@ -15,8 +14,6 @@ const rootRouter = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const app = express();
 
-
-
 // Добавляем middleware для обработки JSON в body запроса
 app.use(express.json());
 
@@ -25,17 +22,8 @@ app.use(cookieParser());
 // Подключаемся к серверу MongoDB
 mongoose.connect('mongodb://localhost:27017/mestobd', { useNewUrlParser: true, useUnifiedTopology: true });
 
-
 // Подключаем логгер запросов
 app.use(requestLogger);
-
-// Разрешаем запросы только с определенных источников
-const corsOptions = {
-  origin: ['https://mesto-15.nomoredomains.monster', 'http://mesto-15.nomoredomains.monster', 'http://localhost:3001']
-};
-
-// Middleware для обработки CORS
-app.use(cors(corsOptions));
 
 // краш-тест сервера
 app.get('/crash-test', () => {
