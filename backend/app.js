@@ -33,7 +33,7 @@ app.use(requestLogger);
 const corsOptions = {
   origin: ['https://mesto-15.nomoredomains.monster', 'http://mesto-15.nomoredomains.monster', 'http://localhost:3001']
 };
-app.use(cors(corsOptions));
+
 // Middleware для обработки CORS
 app.use(cors(corsOptions));
 
