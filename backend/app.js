@@ -26,11 +26,12 @@ app.use(cookieParser());
 // Подключаемся к серверу MongoDB
 mongoose.connect('mongodb://localhost:27017/mestobd', { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Middleware для обработки CORS
-app.use(cors(corsOptions));
 
 // Подключаем логгер запросов
 app.use(requestLogger);
+
+// Middleware для обработки CORS
+app.use(cors(corsOptions));
 
 // краш-тест сервера
 app.get('/crash-test', () => {
