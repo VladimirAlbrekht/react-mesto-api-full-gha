@@ -1,11 +1,13 @@
 class Api {
-  constructor(options) {
-    this._options = options;
-    this._baseUrl = options.baseUrl;
+  constructor({
+    baseUrl,
+    headers
+  }) {
+    this._baseUrl = baseUrl;
     this._userUrl = `${this._baseUrl}/users/me`;
     this._cardsUrl = `${this._baseUrl}/cards`;
-    this._likesUrl = `${this._baseUrl}/cards/likes`;
-    this._headers = options.headers;
+    this._likesUrl = `${baseUrl}/cards/likes`;
+    this._headers = headers;
   }
 
   _getResponse(res) {
