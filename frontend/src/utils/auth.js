@@ -19,7 +19,7 @@ export const register = (password, email) => {
       password,
       email,
     }),
-  }).then((res) => getResponseData(res));
+  }).then((res) => getResponseData(res.json()));
 };
 
 export const login = (password, email) => {
@@ -34,7 +34,7 @@ export const login = (password, email) => {
       password,
       email,
     }),
-  }).then((res) => getResponseData(res));
+  }).then((res) => getResponseData(res.json()));
 };
 
 export const checkToken = () => {
