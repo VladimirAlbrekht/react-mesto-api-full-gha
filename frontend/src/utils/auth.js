@@ -2,7 +2,7 @@ export const BASE_URL = "https://api.mesto-15.nomoredomains.monster";
 
 const getResponseData = (res) => {
   if (res.ok) {
-    return res;
+    return res.json();
   }
   return Promise.reject(`Ошибка: ${res.status}`);
 } 
@@ -19,7 +19,7 @@ export const register = (password, email) => {
       password,
       email,
     }),
-  }).then((res) => getResponseData(res.json()));
+  }).then((res) => getResponseData(res));
 };
 
 export const login = (password, email) => {
@@ -34,7 +34,7 @@ export const login = (password, email) => {
       password,
       email,
     }),
-  }).then((res) => getResponseData(res.json()));
+  }).then((res) => getResponseData(res));
 };
 
 export const checkToken = () => {
