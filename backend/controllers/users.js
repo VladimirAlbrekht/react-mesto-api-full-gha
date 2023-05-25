@@ -41,10 +41,8 @@ const createUser = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   const { email, password } = req.body;
-  console.log(`test 2 ${email, password}`)
   try {
     const user = await User.findOne({ email }).select('+password');
-    console.log(`test 3 ${user}`)
     if (!user) {
       return next(new AuthError('Неправильные почта или пароль'));
     }
@@ -54,7 +52,6 @@ const login = async (req, res, next) => {
     if (!isPasswordValid) {
       return next(new AuthError('Неправильные почта или пароль'));
     }
-    console.log(`test 4 ${token}`)
     const token = generateToken({ _id: user._id });
     res.cookie('jwt', token);
     return res.status(200).json();
