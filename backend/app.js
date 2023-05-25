@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
@@ -24,12 +23,6 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-// Добавляем middleware для установки заголовка Content-Type
-app.use((req, res, next) => {
-  res.setHeader('Content-Type', 'application/json');
-  next();
-});
-
 // Подключаемся к серверу MongoDB
 mongoose.connect('mongodb://localhost:27017/mestobd', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -37,7 +30,14 @@ mongoose.connect('mongodb://localhost:27017/mestobd', { useNewUrlParser: true, u
 app.use(requestLogger);
 
 // cors запросы
-app.use(cors(corsOption));
+app.use(corsOption);
+
+// Добавляем middleware для установки заголовка в ответ на запросы с домена https://mesto-15.nomoredomains.monster
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://mesto-15.nomoredomains.monster');
+  next();
+});
+
 
 // краш-тест сервера
 app.get('/crash-test', () => {
