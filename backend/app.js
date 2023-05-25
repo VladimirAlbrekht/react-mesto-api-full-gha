@@ -17,10 +17,12 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 
-app.use(cookieParser());
+
 
 // Добавляем middleware для обработки JSON в body запроса
 app.use(express.json());
+
+app.use(cookieParser());
 
 // Добавляем middleware для установки заголовка Content-Type
 app.use((req, res, next) => {

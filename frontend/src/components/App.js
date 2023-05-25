@@ -78,7 +78,7 @@ function App() {
         .checkToken(token)
         .then((data) => {
           if (data) {
-            setEmail(data.data.email);
+            setEmail(data.email);
             handleLoggedIn();
             navigate("/");
           }
