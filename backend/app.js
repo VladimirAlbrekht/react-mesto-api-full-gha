@@ -2,9 +2,10 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
+
 const rateLimit = require('express-rate-limit');
 const NoFoundError = require('./errors/noFoundError');
 
@@ -12,7 +13,7 @@ const errorHandler = require('./middlewares/errorHandler');
 const rootRouter = require('./routes/index');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('./middlewares/cors');
+const corsOptions = require('./middlewares/cors');
 const app = express();
 
 
@@ -26,7 +27,7 @@ app.use(cookieParser());
 mongoose.connect('mongodb://localhost:27017/mestobd', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Middleware для обработки CORS
-app.use(cors);
+app.use(cors(corsOptions));
 
 // Подключаем логгер запросов
 app.use(requestLogger);
