@@ -37,7 +37,7 @@ const validateUserProfile = celebrate({
   }),
 });
 
-const imageRegexImg = /^https?:\/\/(www\.)?[a-zA-Z0-9\-_]+\.[a-zA-Z0-9\-_]+\.(png|jpg|jpeg|gif)$/;
+const imageRegexImg = /^https?:\/\/(www\.)?[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-]+\.(png|jpg|jpeg|gif)$/;
 
 const validateUserAvatar = celebrate({
   body: Joi.object().keys({
