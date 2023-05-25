@@ -37,11 +37,11 @@ const validateUserProfile = celebrate({
   }),
 });
 
-const imageRegexImg = /^https?:\/\/(www\.)?[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-]+\.(png|jpg|jpeg|gif)$/;
+//const imageRegexImg = /^https?:\/\/(www\.)?[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-]+\.(png|jpg|jpeg|gif)$/;
 
 const validateUserAvatar = celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().required().regex(imageRegexImg),
+    avatar: Joi.string().required(),
   }),
 });
 
@@ -49,7 +49,7 @@ const validateSignup = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
-    avatar: Joi.string().regex(imageRegexImg),
+    avatar: Joi.string().regex(),
     email: Joi.string().email().required(),
     password: Joi.string().required().min(1).presence('required'),
   }),
