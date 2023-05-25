@@ -1,17 +1,12 @@
-export const BASE_URL = "https://api.mesto-15.nomoredomains.monster";
+export const BASE_URL = "https://auth.nomoreparties.co";
 
 
 const getResponseData = (res) => {
-  console.log(res);
   if (res.ok) {
-    return res.json().then((data) => {
-      console.log(data);
-      return data || {};
-    });
+    return res.json();
   }
   return Promise.reject(`Ошибка: ${res.status}`);
-};
-
+} 
 
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
