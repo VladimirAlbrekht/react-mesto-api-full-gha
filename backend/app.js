@@ -13,7 +13,6 @@ const errorHandler = require('./middlewares/errorHandler');
 const rootRouter = require('./routes/index');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const corsOptions = require('./middlewares/cors');
 const app = express();
 
 
@@ -30,6 +29,11 @@ mongoose.connect('mongodb://localhost:27017/mestobd', { useNewUrlParser: true, u
 // Подключаем логгер запросов
 app.use(requestLogger);
 
+// Разрешаем запросы только с определенных источников
+const corsOptions = {
+  origin: ['https://mesto-15.nomoredomains.monster', 'http://mesto-15.nomoredomains.monster', 'http://localhost:3001']
+};
+app.use(cors(corsOptions));
 // Middleware для обработки CORS
 app.use(cors(corsOptions));
 
