@@ -53,11 +53,11 @@ const login = async (req, res, next) => {
     }
     const token = generateToken({ _id: user._id });
     res.cookie('jwt', token);
-    return res.cookie('jwt', token).send({ message: 'Авторизация прошла успешно' });
+    return res.status(200).json();
   } catch (error) {
     return next(error);
   }
-}
+};
 
 const getUsers = async (req, res, next) => {
   try {
