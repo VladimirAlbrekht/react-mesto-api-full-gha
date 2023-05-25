@@ -26,7 +26,6 @@ const createUser = async (req, res, next) => {
       email,
       password: hashedPassword,
     });
-    console.log(`test 1 ${newUser}`);
     return res.status(201).json(newUser.toJSON());
   } catch (error) {
     if (error instanceof ValidationError) {
@@ -54,7 +53,7 @@ const login = async (req, res, next) => {
     }
     const token = generateToken({ _id: user._id });
     res.cookie('jwt', token);
-    return res.status(200).json();
+    return res.send({ message: 'Успешный вход' });
   } catch (error) {
     return next(error);
   }
