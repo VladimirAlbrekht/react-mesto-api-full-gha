@@ -1,20 +1,29 @@
 
-const CORS_WHITELIST = ['http://localhost:3001',
+const allowedCors = [
   'https://mesto-15.nomoredomains.monster',
   'http://mesto-15.nomoredomains.monster',
+  'http://localhost:3001',
 ];
 
-const corsOption = {
-  credentials: true,
-  origin: function checkCorsList(origin, callback) {
-    if (CORS_WHITELIST.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: "GET,POST,PUT,PATCH,DELETE",
-  allowedHeaders: "Content-Type,Authorization",
-};
+const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+const allowedHeaders = [
+  'Content-Type',
+  'Authorization',
+];
 
-module.exports = corsOption;
+app.use(function(req, res, next) {
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+
+  res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Headers', allowedHeaders.join(','));
+
+  if (req.method === 'OPTIONS') {
+    res.send(200);
+  } else {
+    next();
+  }
+});

@@ -9,11 +9,10 @@ const rateLimit = require('express-rate-limit');
 const NoFoundError = require('./errors/noFoundError');
 
 const errorHandler = require('./middlewares/errorHandler');
-const corsOption = require('./middlewares/cors');
 const rootRouter = require('./routes/index');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-
+const cors = require('./middlewares/cors');
 const app = express();
 
 
@@ -26,18 +25,11 @@ app.use(cookieParser());
 // Подключаемся к серверу MongoDB
 mongoose.connect('mongodb://localhost:27017/mestobd', { useNewUrlParser: true, useUnifiedTopology: true });
 
+// Middleware для обработки CORS
+app.use(cors);
+
 // Подключаем логгер запросов
 app.use(requestLogger);
-
-// cors запросы
-app.use(corsOption);
-
-// Добавляем middleware для установки заголовка в ответ на запросы с домена https://mesto-15.nomoredomains.monster
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://mesto-15.nomoredomains.monster');
-  next();
-});
-
 
 // краш-тест сервера
 app.get('/crash-test', () => {
