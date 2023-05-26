@@ -68,33 +68,7 @@ function App() {
         });
     }
   }, [loggedIn]);
-  
-  //при загрузке страницы проверяем токен и перенаправляем пользователя
-  React.useEffect(() => {
-    const token = localStorage.getItem("token");
 
-    if (token) {
-      auth
-        .checkToken(token)
-        .then((data) => {
-          if (data) {
-            api
-              .then((data) => {
-                setCards(data);
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-            setEmail(data.email);
-            handleLoggedIn();
-            navigate("/");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [navigate]);
   //Сохраняем изменения данных пользователя
   function handleUpdateUser(newUserData) {
     setIsLoading(true);
@@ -240,11 +214,9 @@ function App() {
   function handleLogin(password, email) {
     auth
       .login(password, email)
-      .then((data) => {
-        if (data.token) {
+      .then(res => {{
           setEmail(email);
           handleLoggedIn();
-          localStorage.setItem("token", data.token);
           navigate("/");
         }
       })
@@ -256,7 +228,6 @@ function App() {
 
   //обработчик выхода пользователя
   function handleSignOut() {
-    localStorage.removeItem("token");
     console.log("exit");
     setLoggedIn(false);
     setEmail("");
@@ -267,7 +238,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <div className="page">
-          <Header email={email} onSignOut={handleSignOut} />
+        <Header email={loggedIn ? email : ''} onSignOut={handleSignOut} />
           <Routes>
             <Route
               path="/*"

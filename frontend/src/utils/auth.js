@@ -1,13 +1,11 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
-
+export const BASE_URL = "https://api.mesto-15.nomoredomains.monster";
 
 const getResponseData = (res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Ошибка: ${res.status}`);
 } 
-
 
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
@@ -16,6 +14,7 @@ export const register = (password, email) => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
+    credentials: 'include',
     body: JSON.stringify({
       password,
       email,
@@ -30,6 +29,7 @@ export const login = (password, email) => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
+    credentials: 'include',
     body: JSON.stringify({
       password,
       email,
@@ -37,13 +37,13 @@ export const login = (password, email) => {
   }).then((res) => getResponseData(res));
 };
 
-export const checkToken = (token) => {
+export const checkToken = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
+    credentials: 'include'
   }).then((res) => getResponseData(res));
 };
