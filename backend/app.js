@@ -13,7 +13,10 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NoFoundError = require('./errors/noFoundError');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://mesto-15.nomoredomains.monster',
+  credentials: true,
+}));
 
 dotenv.config();
 
