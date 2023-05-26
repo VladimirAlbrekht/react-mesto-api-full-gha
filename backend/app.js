@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -12,6 +13,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NoFoundError = require('./errors/noFoundError');
 
 const app = express();
+app.use(cors());
 
 dotenv.config();
 
