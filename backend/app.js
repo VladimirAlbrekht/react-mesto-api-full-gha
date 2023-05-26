@@ -1,3 +1,6 @@
+const express = require('express');
+const cors = require('cors');
+
 require('dotenv').config();
 
 const express = require('express');
@@ -14,6 +17,10 @@ const rootRouter = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const app = express();
 
+
+// Разрешаем запросы со всех источников
+app.use(cors());
+
 // Добавляем middleware для обработки JSON в body запроса
 app.use(express.json());
 
@@ -21,6 +28,7 @@ app.use(cookieParser());
 
 // Подключаемся к серверу MongoDB
 mongoose.connect('mongodb://localhost:27017/mestobd', { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 // Подключаем логгер запросов
 app.use(requestLogger);
