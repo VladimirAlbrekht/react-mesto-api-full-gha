@@ -85,7 +85,7 @@ function App() {
               .catch((err) => {
                 console.log(err);
               });
-            setEmail(data.data.email);
+            setEmail(data.email);
             handleLoggedIn();
             navigate("/");
           }

@@ -1,10 +1,13 @@
+require('dotenv').config();
 const JWT = require('jsonwebtoken');
+
+const { sign, verify } = JWT;
+
+const JWT_SECRET = process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'dev-secret';
 const AuthError = require('../errors/authError');
 
-const SECRET_KEY = 'SECRET';
-
 function generateToken(payload) {
-  return JWT.sign(payload, SECRET_KEY, { expiresIn: '7d' });
+  return sign(payload, JWT_SECRET, { expiresIn: '7d' });
 }
 
 function checkToken(token) {
@@ -12,7 +15,7 @@ function checkToken(token) {
     return new AuthError('Неправильный токен');
   }
   try {
-    return JWT.verify(token, SECRET_KEY);
+    return verify(token, JWT_SECRET);
   } catch (err) {
     return { error: err.message };
   }

@@ -26,7 +26,6 @@ const createUser = async (req, res, next) => {
       email,
       password: hashedPassword,
     });
-
     return res.status(201).json(newUser.toJSON());
   } catch (error) {
     if (error instanceof ValidationError) {
@@ -41,10 +40,8 @@ const createUser = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   const { email, password } = req.body;
-
   try {
     const user = await User.findOne({ email }).select('+password');
-
     if (!user) {
       return next(new AuthError('Неправильные почта или пароль'));
     }
@@ -54,10 +51,9 @@ const login = async (req, res, next) => {
     if (!isPasswordValid) {
       return next(new AuthError('Неправильные почта или пароль'));
     }
-
     const token = generateToken({ _id: user._id });
     res.cookie('jwt', token);
-    return res.status(200).json();
+    return res.cookie('jwt', token).send({ message: 'Авторизация прошла успешно' });
   } catch (error) {
     return next(error);
   }
