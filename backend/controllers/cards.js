@@ -15,8 +15,11 @@ const getCards = (req, res, next) => {
 const createCard = (req, res, next) => {
   const owner = req.user._id;
   const { name, link } = req.body;
+
   Card.create({ name, link, owner })
-    .then((card) => card.populate(['owner']).execPopulate())
+    .then((card) => {
+      return card.populate('owner');
+    })
     .then((card) => {
       res.status(201).send(card);
     })
