@@ -17,6 +17,7 @@ const createCard = (req, res, next) => {
   const owner = req.user._id;
 
   Card.create({ name, link, owner })
+    .populate(['owner', 'likes'])
     .then((card) => res.json(card))
     .catch((error) => {
       if (error instanceof ValidationError) {
