@@ -17,9 +17,7 @@ const createCard = (req, res, next) => {
   const { name, link } = req.body;
 
   Card.create({ name, link, owner })
-    .then((card) => {
-      return card.populate(['owner', 'likes']);
-    })
+    .then((card) => card.populate(['owner', 'likes']))
     .then((card) => {
       res.status(201).send(card);
     })
@@ -65,7 +63,7 @@ const likeCard = (req, res, next) => {
     { $addToSet: { likes: req.user._id } },
     { new: true },
   )
-    .populate('likes')
+    .populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         return next(new NoFoundError('Карточка не найдена'));
@@ -88,7 +86,7 @@ const dislikeCard = (req, res, next) => {
     { $pull: { likes: req.user._id } },
     { new: true },
   )
-    .populate('likes')
+    .populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         return next(new NoFoundError('Карточка не найдена'));
