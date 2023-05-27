@@ -13,15 +13,18 @@ const getCards = (req, res, next) => {
 };
 
 const createCard = (req, res, next) => {
-  const { name, link } = req.body;
   const owner = req.user._id;
-
+  const { name, link } = req.body;
   Card.create({ name, link, owner })
-    .then((card) => res.json(card))
+    .then((card) => card.populate(['owner']).execPopulate())
+    .then((card) => {
+      res.status(201).send(card);
+    })
     .catch((error) => {
       if (error instanceof ValidationError) {
         return next(new ValidationError(error.message));
-      } return next(error);
+      }
+      return next(error);
     });
 };
 
