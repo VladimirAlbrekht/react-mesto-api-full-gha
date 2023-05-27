@@ -6,7 +6,6 @@ class Api {
     this._baseUrl = baseUrl;
     this._userUrl = `${this._baseUrl}/users/me`;
     this._cardsUrl = `${this._baseUrl}/cards`;
-    this._likesUrl = `${this._baseUrl}/cards/likes`;
     this._headers = headers;
   }
 
@@ -75,7 +74,7 @@ class Api {
   }
 
   changeLikeCardStatus(cardId, isNotLiked) {
-    return fetch(`${this._likesUrl}/${cardId}`, {
+    return fetch(`${this._cardsUrl}/${cardId}/likes`, {
       method: isNotLiked ? "PUT" : "DELETE",
       headers: this._headers,
       credentials: 'include',
