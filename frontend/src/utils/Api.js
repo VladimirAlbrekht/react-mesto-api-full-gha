@@ -6,7 +6,7 @@ class Api {
     this._baseUrl = baseUrl;
     this._userUrl = `${this._baseUrl}/users/me`;
     this._cardsUrl = `${this._baseUrl}/cards`;
-    this._likesUrl = `${baseUrl}/cards/likes`;
+    this._likesUrl = `${this._baseUrl}/cards/likes`;
     this._headers = headers;
   }
 
