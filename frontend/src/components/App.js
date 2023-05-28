@@ -46,7 +46,6 @@ function App() {
 
   //Подгружаем данные пользователя
   React.useEffect(() => {
-    checkToken();
     if (loggedIn) {
       api.getUserData()
         .then((data) => {
@@ -70,6 +69,7 @@ function App() {
         });
     }
   }, [loggedIn]);
+
 
   //Сохраняем изменения данных пользователя
   function handleUpdateUser(newUserData) {
@@ -235,6 +235,19 @@ function App() {
     setEmail("");
     navigate("/sign-in");
   }
+
+  // Повторная автоматическая авторизация при перезагрузке страницы
+  useEffect(() => {
+    checkToken()
+      .then((res) => {
+        if (res) {
+          setEmail(res.email);
+          handleLoggedIn();
+          navigate("/");
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
