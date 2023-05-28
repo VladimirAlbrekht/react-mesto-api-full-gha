@@ -17,6 +17,7 @@ import Login from "./Login.js";
 import InfoTooltip from "./InfoTooltip.js";
 
 import * as auth from "../utils/auth.js";
+import { checkToken } from '../utils/auth.js';
 
 function App() {
   const navigate = useNavigate();
@@ -45,6 +46,7 @@ function App() {
 
   //Подгружаем данные пользователя
   React.useEffect(() => {
+    checkToken();
     if (loggedIn) {
       api.getUserData()
         .then((data) => {
@@ -201,7 +203,7 @@ function App() {
       .then((data) => {
         if (data) {
           handleInfoTooltip(true);
-          navigate("/sign-up");
+          navigate("/sign-in");
         }
       })
       .catch((err) => {
