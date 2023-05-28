@@ -36,6 +36,12 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
+// Делаем crash-тест
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+}); 
 // Подключаем корневой роутер
 app.use(rootRouter);
 
