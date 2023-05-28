@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import ProtectedRouteElement from "./ProtectedRoute.js";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 import api from "../utils/Api.js";
