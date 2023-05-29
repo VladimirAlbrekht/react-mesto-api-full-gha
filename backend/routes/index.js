@@ -13,7 +13,7 @@ router.post('/signin', validateSignin, login);
 router.use(checkAuth);
 
 // Маршрут для выхода пользователя
-router.get('/signout', signOut);
+router.post('/signout', signOut);
 
 // Роутеры, требующие авторизации
 router.use('/users', usersRouter);
