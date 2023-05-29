@@ -47,3 +47,14 @@ export const checkToken = () => {
     credentials: 'include'
   }).then((res) => getResponseData(res));
 };
+
+export const handleSignOut = () => {
+  return fetch(`${BASE_URL}/signout`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    credentials: 'include',
+  }).then((res) => getResponseData(res));
+};

@@ -18,7 +18,7 @@ import Login from "./Login.js";
 import InfoTooltip from "./InfoTooltip.js";
 
 import * as auth from "../utils/auth.js";
-import { checkToken } from '../utils/auth.js';
+import { checkToken, handleSignOut} from '../utils/auth.js';
 
 function App() {
   const navigate = useNavigate();
@@ -229,12 +229,15 @@ function App() {
       });
   }
 
-  //обработчик выхода пользователя
   function handleSignOut() {
-    console.log("exit");
-    setLoggedIn(false);
-    setEmail("");
-    navigate("/sign-in");
+    auth.handleSignOut()
+      .then(() => {
+        console.log("exit");
+        setLoggedIn(false);
+        setEmail("");
+        navigate("/sign-in");
+      })
+      .catch((err) => console.error(err));
   }
 
   // Повторная автоматическая авторизация при перезагрузке страницы

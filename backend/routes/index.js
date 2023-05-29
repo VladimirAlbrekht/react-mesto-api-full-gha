@@ -5,12 +5,15 @@ const usersRouter = require('./users');
 const cardsRouter = require('./cards');
 const { checkAuth } = require('../middlewares/auth');
 const { validateSignup, validateSignin } = require('../middlewares/validation');
-const { createUser, login } = require('../controllers/users');
+const { createUser, login, signOut } = require('../controllers/users');
 
 // Открытые маршруты
 router.post('/signup', validateSignup, createUser);
 router.post('/signin', validateSignin, login);
 router.use(checkAuth);
+
+// Маршрут для выхода пользователя
+router.get('/signout', signOut);
 
 // Роутеры, требующие авторизации
 router.use('/users', usersRouter);

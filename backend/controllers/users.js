@@ -144,6 +144,15 @@ const updateAvatar = async (req, res, next) => {
   }
 };
 
+const signOut = async (req, res, next) => {
+  try {
+    res.clearCookie('jwt');
+    return res.send({ message: 'Вы успешно вышли из аккаунта' });
+  } catch (error) {
+    return next(error);
+  }
+};
+
 module.exports = {
   createUser,
   login,
@@ -152,4 +161,5 @@ module.exports = {
   getCurrentUser,
   updateUser,
   updateAvatar,
+  signOut,
 };

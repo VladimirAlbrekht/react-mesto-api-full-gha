@@ -6,6 +6,7 @@
   line-height: 1.2;
   font-weight: 500;
   margin-right: 24px;
+  font-family: 'Inter';
 }
 
 @media screen and (max-width: 560px) {
